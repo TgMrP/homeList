@@ -6,32 +6,18 @@
 
     <board-form></board-form>
 
-    <div class="grid grid-cols-3 gap-4">
-      <div
-        class="w-full flex items-center justify-center bg-gray-300 py-4 px-4 text-center hover:bg-gray-500 cursor-pointer"
-        v-for="board in boards"
-        :key="board.id"
-      >
-        <h2 class="font-bold text-xl">{{ board.title }}</h2>
-      </div>
-    </div>
+    <board-list class="grid grid-cols-3 gap-4" />
   </div>
 </template>
 
 <script>
 import boardForm from '../Components/boardForm';
+import BoardList from '../Components/boardList.vue';
 
 export default {
   components: {
     boardForm,
-  },
-  computed: {
-    boards() {
-      return this.$store.getters['Boards/boards'];
-    },
-  },
-  created() {
-    this.$store.dispatch('Boards/fetchBoards');
+    BoardList,
   },
 };
 </script>

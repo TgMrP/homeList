@@ -1,16 +1,8 @@
 <template>
-  <form
-    class="w-full bg-gray-300 py-4 px-4 mb-4 flex items-center justify-center"
-    @submit.prevent="addBoard"
-  >
-    <input
-      type="text"
-      v-model="title"
-      class="text-2xl px-4 py-2 w-full bg-gray-200 focus:outline-none "
-    />
+  <form @submit.prevent="addBoard">
+    <input type="text" v-model="title" />
     <svg
       @click="addBoard"
-      class="text-white h-12 ml-2"
       :class="[title ? 'bg-green-600' : 'bg-gray-600']"
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -48,4 +40,20 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+form {
+  @apply w-full bg-gray-300 py-4 px-4 mb-4 flex items-center justify-center;
+
+  input {
+    @apply text-2xl px-4 py-2 w-full bg-gray-200;
+
+    &:focus {
+      @apply outline-none border-b-2 border-purple-600;
+    }
+  }
+
+  svg {
+    @apply text-white h-12 ml-2;
+  }
+}
+</style>

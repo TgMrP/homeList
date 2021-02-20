@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Str;
 
+$parse = parse_url(env('APP_URL'));
+
 return [
 
     /*
@@ -18,7 +20,7 @@ return [
     |
     */
 
-    'driver' => env('SESSION_DRIVER', 'file'),
+    'driver' => env('SESSION_DRIVER', 'cookie'),
 
     /*
     |--------------------------------------------------------------------------
@@ -155,7 +157,7 @@ return [
     |
     */
 
-    'domain' => env('SESSION_DOMAIN', null),
+    'domain' => env('SESSION_DOMAIN', ".{$parse['host']}"),
 
     /*
     |--------------------------------------------------------------------------

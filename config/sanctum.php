@@ -1,4 +1,5 @@
 <?php
+$parse = parse_url(env('APP_URL'));
 
 return [
 
@@ -13,10 +14,10 @@ return [
     |
     */
 
-    'stateful' => explode(',', env(
-        'SANCTUM_STATEFUL_DOMAINS',
-        'localhost,localhost:3000,127.0.0.1,127.0.0.1:8000,::1'
-    )),
+    'stateful' => [
+        $parse['host'],
+        ".{$parse['host']}"
+    ],
 
     /*
     |--------------------------------------------------------------------------

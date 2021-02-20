@@ -24,10 +24,10 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    if (!this.$store.getters["Auth/authenticated"]) return this.$router.push({
-      name: "home"
+    if (!this.$store.getters['Auth/authenticated']) return this.$router.push({
+      name: 'home'
     });
-    axios.get("/api/user").then(function (res) {
+    axios.get('/api/user').then(function (res) {
       _this.user = res.data;
     });
   }

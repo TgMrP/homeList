@@ -65,7 +65,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return _this.$store.dispatch("Boards/addBoard", _this.title);
+                return _this.$store.dispatch('Boards/addBoard', _this.title);
 
               case 3:
                 _context.next = 8;
@@ -133,11 +133,11 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     boards: function boards() {
-      return this.$store.getters["Boards/boards"];
+      return this.$store.getters['Boards/boards'];
     }
   },
   created: function created() {
-    this.$store.dispatch("Boards/fetchBoards");
+    this.$store.dispatch('Boards/fetchBoards');
   }
 });
 
@@ -406,7 +406,7 @@ var render = function() {
             {
               key: board.id,
               staticClass:
-                "w-full flex items-center justify-center bg-gray-300 py-4 text-center"
+                "w-full flex items-center justify-center bg-gray-300 py-4 px-4 text-center hover:bg-gray-500 cursor-pointer"
             },
             [
               _c("h2", { staticClass: "font-bold text-xl" }, [

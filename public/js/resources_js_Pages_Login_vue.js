@@ -125,12 +125,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _this.error = null;
                 _context.prev = 4;
                 _context.next = 7;
-                return _this.$store.dispatch("Auth/Login", _this.user);
+                return _this.$store.dispatch('Auth/Login', _this.user);
 
               case 7:
                 _context.next = 9;
                 return _this.$router.push({
-                  name: "user"
+                  name: 'user'
                 });
 
               case 9:
@@ -291,11 +291,7 @@ var render = function() {
                         "block text-gray-700 text-sm font-bold mb-2 ml-3",
                       attrs: { for: "email" }
                     },
-                    [
-                      _vm._v(
-                        "\n                        Email\n                    "
-                      )
-                    ]
+                    [_vm._v("\n            Email\n          ")]
                   ),
                   _vm._v(" "),
                   _c("input", {
@@ -330,11 +326,7 @@ var render = function() {
                         "block text-gray-700 text-sm font-bold mb-2 ml-3",
                       attrs: { for: "password" }
                     },
-                    [
-                      _vm._v(
-                        "\n                        Password\n                    "
-                      )
-                    ]
+                    [_vm._v("\n            Password\n          ")]
                   ),
                   _vm._v(" "),
                   _c("input", {
@@ -370,7 +362,7 @@ var render = function() {
                       "bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200",
                     attrs: { type: "submit" }
                   },
-                  [_vm._v("\n                    Sign In\n                ")]
+                  [_vm._v("\n          Sign In\n        ")]
                 )
               ]
             )
@@ -390,7 +382,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "max-w-lg mx-auto" }, [
       _c("a", { attrs: { href: "#" } }, [
         _c("h1", { staticClass: "text-4xl font-bold text-white text-center" }, [
-          _vm._v("\n                HomeList\n            ")
+          _vm._v("\n        HomeList\n      ")
         ])
       ])
     ])
@@ -421,11 +413,7 @@ var staticRenderFns = [
             "text-sm text-purple-600 hover:text-purple-700 hover:underline mb-6",
           attrs: { href: "#" }
         },
-        [
-          _vm._v(
-            "\n                        Forgot your password?\n                    "
-          )
-        ]
+        [_vm._v("\n            Forgot your password?\n          ")]
       )
     ])
   },

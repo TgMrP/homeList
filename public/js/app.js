@@ -1884,25 +1884,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (new vue_router__WEBPACK_IMPORTED_MODULE_0__.default({
-  mode: "history",
+  mode: 'history',
   routes: [{
-    path: "/",
+    path: '/',
     component: function component() {
       return __webpack_require__.e(/*! import() */ "resources_js_Pages_Home_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../Pages/Home.vue */ "./resources/js/Pages/Home.vue"));
     },
-    name: "home"
+    name: 'home'
   }, {
-    path: "/login",
+    path: '/login',
     component: function component() {
       return __webpack_require__.e(/*! import() */ "resources_js_Pages_Login_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../Pages/Login.vue */ "./resources/js/Pages/Login.vue"));
     },
-    name: "login"
+    name: 'login'
   }, {
-    path: "/user",
+    path: '/user',
     component: function component() {
       return __webpack_require__.e(/*! import() */ "resources_js_Pages_User_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../Pages/User.vue */ "./resources/js/Pages/User.vue"));
     },
-    name: "user"
+    name: 'user'
   }]
 }));
 
@@ -1958,16 +1958,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 commit = _ref.commit;
                 _context.next = 3;
-                return axios.get("/sanctum/csrf-cookie");
+                return axios.get('/sanctum/csrf-cookie');
 
               case 3:
                 _context.next = 5;
-                return axios.post("/api/login", user);
+                return axios.post('/api/login', user);
 
               case 5:
                 _yield$axios$post = _context.sent;
                 data = _yield$axios$post.data;
-                commit("SET_USER", data);
+                commit('SET_USER', data);
 
               case 8:
               case "end":
@@ -1987,12 +1987,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 commit = _ref2.commit;
                 _context2.next = 3;
-                return axios.get("/api/user");
+                return axios.get('/api/user');
 
               case 3:
                 _yield$axios$get = _context2.sent;
                 data = _yield$axios$get.data;
-                commit("SET_USER", data);
+                commit('SET_USER', data);
 
               case 6:
               case "end":
@@ -2057,12 +2057,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 commit = _ref.commit;
                 _context.next = 3;
-                return axios.get("/api/boards");
+                return axios.get('/api/boards');
 
               case 3:
                 _yield$axios$get = _context.sent;
                 data = _yield$axios$get.data;
-                commit("SET_BOARDS", data);
+                commit('SET_BOARDS', data);
 
               case 6:
               case "end":
@@ -2082,14 +2082,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 commit = _ref2.commit;
                 _context2.next = 3;
-                return axios.post("/api/board/add", {
+                return axios.post('/api/board/add', {
                   title: title
                 });
 
               case 3:
                 _yield$axios$post = _context2.sent;
                 data = _yield$axios$post.data;
-                commit("ADD_BOARD", data);
+                commit('ADD_BOARD', data);
 
               case 6:
               case "end":
@@ -2159,7 +2159,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 vue__WEBPACK_IMPORTED_MODULE_3__.default.use(vue_router__WEBPACK_IMPORTED_MODULE_4__.default);
 var app = new vue__WEBPACK_IMPORTED_MODULE_3__.default({
-  el: "#app",
+  el: '#app',
   router: _Router__WEBPACK_IMPORTED_MODULE_0__.default,
   store: _Store__WEBPACK_IMPORTED_MODULE_1__.default,
   components: {
@@ -2185,16 +2185,16 @@ var instance = axios__WEBPACK_IMPORTED_MODULE_0___default().create({
   withCredentials: true
 });
 instance.interceptors.request.use(function (request) {
-  request.headers.common["Accept"] = "application/json";
-  request.headers.common["Content-Type"] = "application/json";
-  request.headers.common["X-Requested-With"] = "XMLHttpRequest";
+  request.headers.common['Accept'] = 'application/json';
+  request.headers.common['Content-Type'] = 'application/json';
+  request.headers.common['X-Requested-With'] = 'XMLHttpRequest';
   return request;
 });
 instance.interceptors.response.use(function (response) {
   return response;
 }, function (error) {
   if (error.response.status === 401) {
-    sessionStorage.removeItem("user"); // window.location.reload();
+    sessionStorage.removeItem('user'); // window.location.reload();
   }
 
   return Promise.reject(error);

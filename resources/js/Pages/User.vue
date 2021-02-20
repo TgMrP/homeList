@@ -1,22 +1,22 @@
 <template>
-    <div>{{ user }}</div>
+  <div>{{ user }}</div>
 </template>
 
 <script>
 export default {
-    data() {
-        return {
-            user: null
-        };
-    },
-    created() {
-        if (!this.$store.getters["Auth/authenticated"])
-            return this.$router.push({ name: "home" });
+  data() {
+    return {
+      user: null,
+    };
+  },
+  created() {
+    if (!this.$store.getters['Auth/authenticated'])
+      return this.$router.push({ name: 'home' });
 
-        axios.get("/api/user").then(res => {
-            this.user = res.data;
-        });
-    }
+    axios.get('/api/user').then(res => {
+      this.user = res.data;
+    });
+  },
 };
 </script>
 

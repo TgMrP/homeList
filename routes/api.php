@@ -12,6 +12,7 @@ Route::delete('/logout', [LoginController::class, 'logout']);
 Route::middleware(['auth'])->group(function () {
     Route::get('/boards', [BoardController::class, 'index']);
     Route::post('/board/add', [BoardController::class, 'store']);
+    Route::get('/board/{id}', [BoardController::class, 'show']);
 });
 
 Route::get('/user', function () {

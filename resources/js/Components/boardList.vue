@@ -1,11 +1,14 @@
 <template>
   <div>
     <div class="boards" v-for="board in boards" :key="board.id">
-      <h2>
-        <router-link :to="{ name: 'board' }">
+      <router-link
+        :to="{ name: 'board', params: { id: board.id } }"
+        class="w-full h-full flex items-center"
+      >
+        <h2>
           {{ board.title }}
-        </router-link>
-      </h2>
+        </h2>
+      </router-link>
     </div>
   </div>
 </template>
@@ -16,9 +19,6 @@ export default {
     boards() {
       return this.$store.getters['Boards/boards'];
     },
-  },
-  created() {
-    this.$store.dispatch('Boards/fetchBoards');
   },
 };
 </script>
@@ -32,7 +32,7 @@ export default {
   }
 
   h2 {
-    @apply font-bold text-xl;
+    @apply w-full font-bold text-xl;
   }
 }
 </style>

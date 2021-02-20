@@ -109,14 +109,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   computed: {
     boards: function boards() {
       return this.$store.getters['Boards/boards'];
     }
-  },
-  created: function created() {
-    this.$store.dispatch('Boards/fetchBoards');
   }
 });
 
@@ -199,7 +199,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".boards[data-v-d78045ee] {\n  --tw-bg-opacity: 1;\n  background-color: rgba(209, 213, 219, var(--tw-bg-opacity));\n  cursor: pointer;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  padding-top: 1rem;\n  padding-bottom: 1rem;\n  padding-left: 1rem;\n  padding-right: 1rem;\n  text-align: center;\n  width: 100%;\n}\n.boards[data-v-d78045ee]:hover {\n  --tw-bg-opacity: 1;\n  background-color: rgba(229, 231, 235, var(--tw-bg-opacity));\n  --tw-border-opacity: 1;\n  border-color: rgba(0, 0, 0, var(--tw-border-opacity));\n  border-width: 1px;\n}\n.boards h2[data-v-d78045ee] {\n  font-weight: 700;\n  font-size: 1.25rem;\n  line-height: 1.75rem;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".boards[data-v-d78045ee] {\n  --tw-bg-opacity: 1;\n  background-color: rgba(209, 213, 219, var(--tw-bg-opacity));\n  cursor: pointer;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  padding-top: 1rem;\n  padding-bottom: 1rem;\n  padding-left: 1rem;\n  padding-right: 1rem;\n  text-align: center;\n  width: 100%;\n}\n.boards[data-v-d78045ee]:hover {\n  --tw-bg-opacity: 1;\n  background-color: rgba(229, 231, 235, var(--tw-bg-opacity));\n  --tw-border-opacity: 1;\n  border-color: rgba(0, 0, 0, var(--tw-border-opacity));\n  border-width: 1px;\n}\n.boards h2[data-v-d78045ee] {\n  font-weight: 700;\n  font-size: 1.25rem;\n  line-height: 1.75rem;\n  width: 100%;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -967,17 +967,25 @@ var render = function() {
   return _c(
     "div",
     _vm._l(_vm.boards, function(board) {
-      return _c("div", { key: board.id, staticClass: "boards" }, [
-        _c(
-          "h2",
-          [
-            _c("router-link", { attrs: { to: { name: "board" } } }, [
-              _vm._v("\n        " + _vm._s(board.title) + "\n      ")
-            ])
-          ],
-          1
-        )
-      ])
+      return _c(
+        "div",
+        { key: board.id, staticClass: "boards" },
+        [
+          _c(
+            "router-link",
+            {
+              staticClass: "w-full h-full flex items-center",
+              attrs: { to: { name: "board", params: { id: board.id } } }
+            },
+            [
+              _c("h2", [
+                _vm._v("\n        " + _vm._s(board.title) + "\n      ")
+              ])
+            ]
+          )
+        ],
+        1
+      )
     }),
     0
   )

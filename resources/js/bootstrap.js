@@ -17,8 +17,15 @@ instance.interceptors.response.use(
   response => response,
   error => {
     if (error.response.status === 401) {
+      // TODO: 401 page
       sessionStorage.removeItem('user');
       // window.location.reload();
+    } else if (error.response.status === 404) {
+      // TODO: 404 page
+      window.history.back();
+    } else {
+      // TODO: 500 page
+      window.history.back();
     }
 
     return Promise.reject(error);

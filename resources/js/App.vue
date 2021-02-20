@@ -1,14 +1,17 @@
 <template>
-    <div>
-        <router-view />
-    </div>
+  <div>
+    <router-view />
+  </div>
 </template>
 
 <script>
 export default {
-    created() {
-        this.$store.dispatch("Auth/fetchUser");
+  async created() {
+    await this.$store.dispatch('Auth/fetchUser');
+    if (this.$store.getters['Auth/authenticated']) {
+      await this.$store.dispatch('Boards/fetchBoards');
     }
+  },
 };
 </script>
 

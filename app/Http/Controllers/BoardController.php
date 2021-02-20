@@ -19,6 +19,15 @@ class BoardController extends Controller
         return response($boards, 200);
     }
 
+    public function show(Request $request, $id)
+    {
+        $board = $request->user()->boards->find($id);
+
+        if ($board)  return response($board, 200);
+
+        return response('Not Found', 404);
+    }
+
     public function store(Request $request)
     {
         $newBoard = new Board();

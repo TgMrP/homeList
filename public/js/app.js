@@ -1856,6 +1856,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 //
 //
 //
@@ -1864,7 +1872,32 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   created: function created() {
-    this.$store.dispatch("Auth/fetchUser");
+    var _this = this;
+
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.next = 2;
+              return _this.$store.dispatch('Auth/fetchUser');
+
+            case 2:
+              if (!_this.$store.getters['Auth/authenticated']) {
+                _context.next = 5;
+                break;
+              }
+
+              _context.next = 5;
+              return _this.$store.dispatch('Boards/fetchBoards');
+
+            case 5:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }))();
   }
 });
 
@@ -1903,6 +1936,18 @@ __webpack_require__.r(__webpack_exports__);
       return __webpack_require__.e(/*! import() */ "resources_js_Pages_User_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../Pages/User.vue */ "./resources/js/Pages/User.vue"));
     },
     name: 'user'
+  }, {
+    path: '/board/:id',
+    component: function component() {
+      return __webpack_require__.e(/*! import() */ "resources_js_Pages_Board_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../Pages/Board.vue */ "./resources/js/Pages/Board.vue"));
+    },
+    name: 'board'
+  }, {
+    path: '*',
+    component: function component() {
+      return __webpack_require__.e(/*! import() */ "resources_js_Pages_404_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../Pages/404.vue */ "./resources/js/Pages/404.vue"));
+    },
+    name: '404'
   }]
 }));
 
@@ -2196,7 +2241,14 @@ instance.interceptors.response.use(function (response) {
   return response;
 }, function (error) {
   if (error.response.status === 401) {
+    // TODO: 401 page
     sessionStorage.removeItem('user'); // window.location.reload();
+  } else if (error.response.status === 404) {
+    // TODO: 404 page
+    window.history.back();
+  } else {
+    // TODO: 500 page
+    window.history.back();
   }
 
   return Promise.reject(error);
@@ -37035,7 +37087,7 @@ var index = {
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_Pages_Home_vue":1,"resources_js_Pages_Login_vue":1,"resources_js_Pages_User_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_Pages_Home_vue":1,"resources_js_Pages_Login_vue":1,"resources_js_Pages_User_vue":1,"resources_js_Pages_Board_vue":1,"resources_js_Pages_404_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

@@ -2150,14 +2150,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Router */ "./resources/js/Router/index.js");
 /* harmony import */ var _Store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Store */ "./resources/js/Store/index.js");
 /* harmony import */ var _App_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./App.vue */ "./resources/js/App.vue");
+
+
+
+
+
+
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+vue__WEBPACK_IMPORTED_MODULE_3__.default.use(vue_router__WEBPACK_IMPORTED_MODULE_4__.default); // eslint-disable-next-line no-unused-vars
 
-
-
-
-
-vue__WEBPACK_IMPORTED_MODULE_3__.default.use(vue_router__WEBPACK_IMPORTED_MODULE_4__.default);
 var app = new vue__WEBPACK_IMPORTED_MODULE_3__.default({
   el: '#app',
   router: _Router__WEBPACK_IMPORTED_MODULE_0__.default,
@@ -2179,13 +2181,13 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_3__.default({
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 
+window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 var instance = axios__WEBPACK_IMPORTED_MODULE_0___default().create({
   withCredentials: true
 });
 instance.interceptors.request.use(function (request) {
-  request.headers.common['Accept'] = 'application/json';
+  request.headers.common.Accept = 'application/json';
   request.headers.common['Content-Type'] = 'application/json';
   request.headers.common['X-Requested-With'] = 'XMLHttpRequest';
   return request;

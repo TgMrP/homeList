@@ -1,0 +1,44 @@
+version: "3.7"
+services:
+  db:
+    image: mysql:5.7
+    container_name: homeList-db
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_USER: ${DB_USERNAME}
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    ports:
+      - "5306:3306"
+    networks:
+      homeList:
+        ipv4_address: 10.6.0.5
+    volumes:
+      - homeList-db:/var/lib/mysql
+
+  phpmyadmin:
+    depends_on:
+      - db
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    ports:
+      - '8080:80'
+    environment:
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+    networks:
+      - homeList
+
+volumes:
+  homeList-db:
+    driver: local
+
+networks:
+  homeList:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.6.0.0/16
+          gateway: 10.6.0.1

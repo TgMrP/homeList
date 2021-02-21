@@ -1,3 +1,5 @@
+import axios from '../Plugins/axios';
+
 export default {
   namespaced: true,
   state: () => ({

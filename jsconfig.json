@@ -10,6 +10,7 @@
     "jspm_packages",
     "public",
     "tmp",
-    "temp"
+    "temp",
+    "vendor"
   ]
 }

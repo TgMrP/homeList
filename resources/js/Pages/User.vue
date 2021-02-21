@@ -13,7 +13,7 @@ export default {
     if (!this.$store.getters['Auth/authenticated'])
       return this.$router.push({ name: 'home' });
 
-    axios.get('/api/user').then(res => {
+    this.axios.get('/api/user').then(res => {
       this.user = res.data;
     });
   },

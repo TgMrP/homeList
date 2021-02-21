@@ -19,7 +19,7 @@ export default {
   methods: {
     async fetchBoard() {
       const id = this.$route.params.id;
-      const { data } = await axios.get(`/api/board/${id}`);
+      const { data } = await this.axios.get(`/api/board/${id}`);
       this.board = data;
     },
   },

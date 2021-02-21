@@ -1,3 +1,5 @@
+import axios from '../Plugins/axios';
+
 export default {
   namespaced: true,
   state: () => ({
@@ -18,6 +20,7 @@ export default {
   actions: {
     async Login({ commit }, user) {
       await axios.get('/sanctum/csrf-cookie');
+
       const { data } = await axios.post('/api/login', user);
       commit('SET_USER', data);
     },

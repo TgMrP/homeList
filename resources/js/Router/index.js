@@ -24,9 +24,13 @@ export default new VueRouter({
       name: 'board',
     },
     {
-      path: '*',
+      path: '/notFound',
       component: () => import('../Pages/404.vue'),
       name: '404',
+    },
+    {
+      path: '*',
+      component: () => import('../Pages/404.vue'),
     },
   ],
 });

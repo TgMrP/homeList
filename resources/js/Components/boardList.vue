@@ -1,14 +1,27 @@
 <template>
   <div>
-    <div class="boards" v-for="board in boards" :key="board.id">
-      <router-link
-        :to="{ name: 'board', params: { id: board.id } }"
-        class="w-full h-full flex items-center"
-      >
-        <h2>
-          {{ board.title }}
-        </h2>
-      </router-link>
+    <div
+      class="card shadow-lg compact side bg-primary"
+      v-for="board in boards"
+      :key="board.id"
+    >
+      <div class="flex-row items-center space-x-4 card-body">
+        <div class="flex-1">
+          <h2 class="card-title text-content-primary">{{ board.title }}</h2>
+          <p class="text-content-secondary">
+            <strong>Last update: </strong>
+            {{ board.updated_at }}
+          </p>
+        </div>
+        <div class="flex-0">
+          <button
+            class="btn btn-sm"
+            @click="$router.push({ name: 'board', params: { id: board.id } })"
+          >
+            Enter
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -23,16 +36,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-.boards {
-  @apply w-full flex items-center justify-center bg-gray-300 py-4 px-4 text-center cursor-pointer;
-
-  &:hover {
-    @apply bg-gray-200 border border-black;
-  }
-
-  h2 {
-    @apply w-full font-bold text-xl;
-  }
-}
-</style>
+<style lang="scss" scoped></style>

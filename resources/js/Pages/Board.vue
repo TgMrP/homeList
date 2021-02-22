@@ -1,6 +1,6 @@
 <template>
   <div class="container mx-auto">
-    <div class="title py-4 prose text-center w-full">
+    <div class="title py-4 text-center w-full">
       <h1>{{ board.title }}</h1>
     </div>
     <div>

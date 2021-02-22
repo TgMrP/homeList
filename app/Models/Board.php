@@ -14,6 +14,8 @@ class Board extends Model
         'updated_at' => 'datetime:d/m/Y H:i:s',
     ];
 
+    protected $with = ['items'];
+
     public function items()
     {
         return $this->hasMany(Item::class)->whereNull('item_id');

@@ -16,19 +16,24 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        for ($i = 0; $i < 9; $i++) {
+        $users_limit = $this->command->ask('Please enter the limit for users creating !!');
+        $board_limit = $this->command->ask('Please enter the limit for board per user creating !!');
+        $items_limit = $this->command->ask('Please enter the limit for items per board of user creating !!');
+
+
+        for ($i = 0; $i < $users_limit; $i++) {
             $num = $i > 0 ? $i : '';
             $user = User::factory()->create([
                 'email' => "test{$num}@test.com"
             ]);
 
 
-            for ($x = 0; $x < 5; $x++) {
+            for ($x = 0; $x < $board_limit; $x++) {
                 $board = Board::factory()->create([
                     "user_id" => $user->id
                 ]);
 
-                Item::factory(20)->create([
+                Item::factory($items_limit)->create([
                     "board_id" => $board->id
                 ]);
             }

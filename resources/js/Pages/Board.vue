@@ -1,13 +1,28 @@
 <template>
   <div class="container mx-auto">
-    <div class="title py-4 text-center w-full">
-      <h1>{{ board.title }}</h1>
+    <div
+      class="title py-4 text-center w-full flex items-center justify-between"
+    >
+      <div class="w-1/3"></div>
+      <h1 class="w-1/3">{{ board.title }}</h1>
+      <div class="w-1/3 form-control items-end">
+        <label class="cursor-pointer label">
+          <span class="label-text">Show All</span>
+          <div class="ml-2">
+            <input
+              type="checkbox"
+              :checked="showAll ? true : false"
+              class="toggle toggle-primary"
+              @change="$store.dispatch('Board/showAll')"
+            />
+            <span class="toggle-mark"></span>
+          </div>
+        </label>
+      </div>
     </div>
-    <item-form :board="board" @added="addItem" />
+    <item-form />
     <div>
       <list-item
-        :items="board.items"
-        @added="addItem"
         class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
       />
     </div>
@@ -15,42 +30,24 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
 import ItemForm from '../Components/itemForm.vue';
 import listItem from '../Components/listItem.vue';
 
 export default {
   components: { listItem, ItemForm },
   computed: {
-    ...mapGetters(['Boards/getBoard']),
-  },
-  data() {
-    return {
-      board: {},
-    };
-  },
-  methods: {
-    async fetchBoard() {
-      const id = this.$route.params.id;
-      const { data } = await this.axios.get(`/api/board/${id}`);
-      this.board = data;
+    board() {
+      return this.$store.getters['Board/board'];
     },
-    addItem(item) {
-      if (item.item_id) {
-        this.board.items = this.board.items.map(i => {
-          if (i.id == item.item_id) {
-            i.items = [...i.items, item];
-          }
-
-          return i;
-        });
-      } else {
-        this.board.items.push(item);
-      }
+    showAll() {
+      return this.$store.getters['Board/showAll'];
     },
+  },
+  beforeDestroy() {
+    this.$store.dispatch('Board/clearBoard');
   },
   created() {
-    this.fetchBoard();
+    this.$store.dispatch('Board/fetchBoard');
   },
 };
 </script>

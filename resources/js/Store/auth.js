@@ -18,11 +18,12 @@ export default {
   },
 
   actions: {
-    async Login({ commit }, user) {
+    async Login({ dispatch, commit }, user) {
       await axios.get('/sanctum/csrf-cookie');
 
       const { data } = await axios.post('/api/login', user);
       commit('SET_USER', data);
+      await dispatch('fetchData', null, { root: true });
     },
     async fetchUser({ commit }) {
       const { data } = await axios.get('/api/user');

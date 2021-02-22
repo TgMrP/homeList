@@ -18,6 +18,7 @@
                   type="checkbox"
                   :checked="i.done"
                   class="checkbox checkbox-accent"
+                  @change="markDone(item.id, i.id)"
                 />
                 <span class="checkbox-mark"></span>
               </div>
@@ -28,7 +29,6 @@
           type="text"
           class="form-control input input-xs w-full"
           @keydown.enter="itemAdd"
-          :data-board-id="item.board_id"
           :data-item-id="item.id"
         />
       </div>
@@ -40,23 +40,35 @@
 import itemForm from './itemForm.vue';
 export default {
   components: { itemForm },
-  props: ['items'],
+  computed: {
+    items() {
+      return this.$store.getters['Board/items'];
+    },
+  },
   methods: {
     async itemAdd(event) {
-      const boardId = event.target.dataset.boardId;
       const itemId = event.target.dataset.itemId;
       const title = event.target.value;
-      const { data } = await this.axios.post(
-        `/api/board/${boardId}/items/add`,
-        {
-          title,
+      try {
+        this.$store.dispatch('Board/addItem', {
+          title: title,
           item_id: itemId,
-        }
-      );
-
-      event.target.value = '';
-
-      this.$emit('added', data);
+        });
+      } catch (error) {
+        console.log(error);
+      } finally {
+        event.target.value = '';
+      }
+    },
+    markDone(itemId, id) {
+      try {
+        this.$store.dispatch('Board/markDone', {
+          itemId,
+          id,
+        });
+      } catch (error) {
+        console.log(error);
+      }
     },
   },
 };

@@ -15,6 +15,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/board/add', [BoardController::class, 'store']);
     Route::get('/board/{id}', [BoardController::class, 'show']);
     Route::post('/board/{board_id}/items/add', [ItemController::class, 'store']);
+    Route::post('/items/{id}/mark', [ItemController::class, 'mark']);
 });
 
 Route::get('/user', function () {

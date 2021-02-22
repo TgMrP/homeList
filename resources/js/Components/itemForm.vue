@@ -35,25 +35,24 @@
 
 <script>
 export default {
-  props: ['board'],
   data() {
     return {
       title: null,
     };
+  },
+  computed: {
+    board() {
+      return this.$store.getters['Board/board'];
+    },
   },
   methods: {
     async addItem() {
       if (!this.title) return;
 
       try {
-        const { data } = await this.axios.post(
-          `/api/board/${this.board.id}/items/add`,
-          {
-            title: this.title,
-          }
-        );
-        data.items = [];
-        this.$emit('added', data);
+        this.$store.dispatch('Board/addItem', {
+          title: this.title,
+        });
       } catch (error) {
         console.log(error);
       } finally {

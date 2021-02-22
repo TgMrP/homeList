@@ -16,6 +16,10 @@ class Board extends Model
 
     protected $with = ['items'];
 
+    protected $fillable = [
+        'title',
+    ];
+
     public function items()
     {
         return $this->hasMany(Item::class)->whereNull('item_id');

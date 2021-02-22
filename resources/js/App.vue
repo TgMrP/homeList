@@ -14,10 +14,7 @@ export default {
     NavBar,
   },
   async created() {
-    await this.$store.dispatch('Auth/fetchUser');
-    if (this.$store.getters['Auth/authenticated']) {
-      await this.$store.dispatch('Boards/fetchBoards');
-    }
+    await this.$store.dispatch('fetchData');
   },
 };
 </script>

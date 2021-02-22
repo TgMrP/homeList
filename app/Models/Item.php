@@ -13,11 +13,11 @@ class Item extends Model
 
     public function board()
     {
-        return $this->belongsTo(Board::class)->whereNotNull('item_id');
+        return $this->belongsTo(Board::class);
     }
 
     public function items()
     {
-        return $this->hasMany(Item::class);
+        return $this->hasMany(Item::class)->whereNotNull('item_id');
     }
 }

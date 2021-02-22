@@ -17,6 +17,14 @@ export default {
     ADD_BOARD(state, board) {
       state.boards.push(board);
     },
+    UPDATE_ONE(state, payload) {
+      state.boards = state.boards.map(b => {
+        if (b.id === payload.id) {
+          return payload;
+        }
+        return b;
+      });
+    },
   },
 
   actions: {
@@ -29,6 +37,9 @@ export default {
         title,
       });
       commit('ADD_BOARD', data);
+    },
+    update({ commit }, payload) {
+      commit('UPDATE_ONE', payload);
     },
   },
 };

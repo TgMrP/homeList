@@ -1,15 +1,30 @@
+const daisyui = require('daisyui');
+const daisyuiColors = require('daisyui/colors');
+
 module.exports = {
-    purge: [
-        "./resources/**/*.blade.php",
-        "./resources/**/*.js",
-        "./resources/**/*.vue"
+  purge: {
+    content: [
+      './resources/**/*.blade.php',
+      './resources/**/*.js',
+      './resources/**/*.vue',
     ],
-    darkMode: false, // or 'media' or 'class'
-    theme: {
-        extend: {}
+    options: {
+      safelist: [/data-theme$/],
     },
-    variants: {
-        extend: {}
+  },
+  darkMode: false, // or 'media' or 'class'
+  theme: {
+    extend: {
+      colors: daisyuiColors,
     },
-    plugins: []
+  },
+  variants: {
+    extend: {},
+  },
+  plugins: [daisyui],
+  daisyui: {
+    styled: true,
+    themes: true,
+    rtl: false,
+  },
 };

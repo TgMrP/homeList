@@ -23,6 +23,7 @@ class ItemFactory extends Factory
     public function definition()
     {
         return [
+            "item_id" => null,
             "board_id" => function () {
                 Board::factory()->create();
             },

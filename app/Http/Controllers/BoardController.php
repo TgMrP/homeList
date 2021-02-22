@@ -21,7 +21,7 @@ class BoardController extends Controller
 
     public function show(Request $request, $id)
     {
-        $board = $request->user()->boards->find($id);
+        $board = $request->user()->boards->find($id)->load('items');
 
         if ($board)  return response($board, 200);
 

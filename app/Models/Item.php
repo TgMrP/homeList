@@ -9,8 +9,15 @@ class Item extends Model
 {
     use HasFactory;
 
+    protected $with = ['items'];
+
     public function board()
     {
-        return $this->belongsTo(Board::class);
+        return $this->belongsTo(Board::class)->whereNotNull('item_id');
+    }
+
+    public function items()
+    {
+        return $this->hasMany(Item::class);
     }
 }
